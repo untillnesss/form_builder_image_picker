@@ -124,6 +124,8 @@ class FormBuilderImagePicker extends FormBuilderFieldDecoration<List<dynamic>> {
 
   final WidgetBuilder? loadingWidget;
 
+  final double top, bottom, start, end;
+
   FormBuilderImagePicker({
     super.key,
     required super.name,
@@ -166,6 +168,10 @@ class FormBuilderImagePicker extends FormBuilderFieldDecoration<List<dynamic>> {
     this.placeholderImage,
     this.onTap,
     this.optionsBuilder,
+    this.top = 0,
+    this.bottom = 0,
+    this.start = 0,
+    this.end = 0,
     this.availableImageSources = const [
       ImageSourceOption.camera,
       ImageSourceOption.gallery,
@@ -288,8 +294,10 @@ class FormBuilderImagePicker extends FormBuilderFieldDecoration<List<dynamic>> {
                       displayWidget,
                   if (state.enabled)
                     PositionedDirectional(
-                      top: 0,
-                      end: 0,
+                      top: top,
+                      bottom: bottom,
+                      start: start,
+                      end: end,
                       child: InkWell(
                         onTap: () {
                           state.focus();
